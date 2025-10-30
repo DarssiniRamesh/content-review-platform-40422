@@ -4,7 +4,10 @@ import './indice.css';
 /* Synced from assets/ndice-41-135.html and assets/ndice-41-135.css — Keep structure/classes mapped to Figma. */
 // PUBLIC_INTERFACE
 export default function Indice({ onStart }) {
-  /** Índice screen. Provides CTA buttons that advance to the Instrucciones step within the SPA. */
+  /**
+   * Índice screen. CTA calls onStart() to dispatch START_FROM_INDICE event
+   * as defined in kavia-docs/navigation-flow-indice-instrucciones.md.
+   */
   useEffect(() => {
     // Ensure notice SVGs are decorative and not focusable
     document.querySelectorAll('.notice__icon svg').forEach((svg) => {
