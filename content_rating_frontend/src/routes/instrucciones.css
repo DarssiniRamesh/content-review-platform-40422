@@ -1,0 +1,137 @@
+:root{
+  --bg:#39393e;
+  --cta:#ffe500;
+  --text:#ffffff;
+  --line:#ffffff;
+  --black:#000000;
+}
+
+html,body{ background:var(--bg); color:var(--text); }
+
+#canvas{
+  width:min(100%, 1440px);
+  margin:0 auto;
+  padding:64px 64px 120px;
+  box-sizing:border-box;
+  font-family: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+.typo-64{
+  font-weight:700;
+  font-size:56px;
+  line-height:1.17;
+  margin:0 0 48px 0;
+  text-align:left;
+}
+.typo-69{
+  font-weight:400;
+  font-size:22px;
+  line-height:1.35;
+  margin:24px 0;
+  color:var(--text);
+}
+.typo-70{
+  font-weight:400;
+  font-size:18px;
+  line-height:1.3;
+  margin:0;
+  color:var(--text);
+}
+.typo-67{
+  font-weight:700;
+  font-size:28px;
+  line-height:1.2;
+  color:var(--black);
+  text-align:center;
+}
+
+.section{ margin-bottom:56px; }
+.section--header{ margin-top:8px; }
+
+.cta-block{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin:24px 0 8px 0;
+}
+.cta-frame{
+  background:var(--cta);
+  border-radius:24px;
+  width:560px;
+  height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.cta-text{ padding:8px 16px; }
+.cta-square{
+  width:64px;
+  height:64px;
+  background:#d9d9d9;
+  border-radius:8px;
+}
+
+.figure{ margin:16px 0 24px 0; }
+.img{ display:block; max-width:100%; height:auto; border-radius:8px; }
+.img-176_1015{ width:880px; }
+.img-176_1016{ width:620px; }
+.img-41_221{ width:72px; height:72px; }
+.img-176_1018{ width:900px; }
+.img-176_1021.tall{ width:560px; }
+.img-41_219{ width:520px; }
+
+.group-29360{ margin:16px 0; }
+.group-29360-stage{ position:relative; display:inline-block; }
+.group-29360-stage .overlay{
+  position:absolute;
+  right:28px;
+  top:28px;
+  border-radius:12px;
+}
+
+.shape-rect-small{
+  width:96px;
+  height:94px;
+  background:#d9d9d9;
+  border-radius:10px;
+  margin:8px 0 16px 0;
+}
+.shape-inline{
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:#d9d9d9;
+  border-radius:4px;
+  vertical-align: middle;
+  margin:0 8px;
+}
+
+.section--decorative{
+  position:relative;
+  height:280px;
+  display:flex;
+  align-items:center;
+}
+.decor-line{
+  display:block;
+  width:8px;
+  height:100%;
+  background:var(--line);
+  border-radius:4px;
+}
+
+.section--restart .restart-label{ margin-bottom:8px; }
+
+@media (max-width: 1200px){
+  #canvas{ width:100%; padding:24px; }
+  .cta-frame{ width:100%; height:128px; }
+  .img-176_1015,
+  .img-176_1018,
+  .img-176_1021.tall{ width:100%; }
+  .group-29360-stage .overlay{
+    right:12px;
+    top:12px;
+    width:56px;
+    height:56px;
+  }
+}
