@@ -1,5 +1,6 @@
 :root{
-  /* Colors per Figma (audit doc refs: style_32, style_38, style_41) */
+  /* Shared tokens (kept in sync with instrucciones.css)
+     Colors (Figma refs): style_32, style_15, style_38, style_41 */
   --bg:#39393e;          /* style_32 */
   --text:#ffffff;
   --notice-bg:#ffffff;   /* style_15 */
@@ -13,18 +14,21 @@
   --focus-offset: 2px;
 
   /* Layout tokens (per pixel grid from Figma 41:135) */
-  --base-max: 1440px;            /* audit: frame width */
-  --pad-x: 64px;                 /* audit: side paddings */
-  --pad-top: 64px;
-  --pad-bottom: 120px;
+  --base-max: 1440px;            /* audit: frame width (Figma 41:135) */
+  --pad-x: 64px;                 /* side paddings: 64px */
+  --pad-top: 64px;               /* top padding: 64px */
+  --pad-bottom: 120px;           /* bottom padding: 120px */
 }
 
 html,body{
   margin:0;
   background:var(--bg);
   color:var(--text);
+  font-family: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* Cross-browser font smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #canvas{
@@ -32,16 +36,15 @@ html,body{
   margin: 0 auto;
   padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
   box-sizing: border-box;
-  font-family: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 
-/* Typography: sizes/weights/line-heights mapped from audit */
-/* Title Roboto Bold ~56px, lh ~1.17 (Figma 41:135) */
+/* Typography: sizes/weights/line-heights mapped from audit
+   Title Roboto Bold ~56px, lh ~1.17 (Figma 41:135) */
 .typo-64{
   font-weight:700;
-  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem); /* 28 → 56 */
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem); /* 28 → 56 (Figma 41:135) */
   line-height:1.17;
-  margin:0 0 40px 0; /* audit: 40px spacing below */
+  margin:0 0 40px 0; /* spacing below: 40px */
 }
 
 /* Notice body: Roboto Bold dark on white, ~24px, lh ~1.4 per audit */
@@ -59,7 +62,7 @@ html,body{
   font-weight:700;
   font-size: clamp(1.25rem, 1rem + 1vw, 2.125rem); /* 20 → 34 */
   line-height:1.3;
-  margin:32px 0 12px 0;
+  margin:32px 0 12px 0; /* top 32px, bottom 12px */
 }
 
 /* Section body: Roboto Regular ~20px, lh 1.5 per Figma */
@@ -92,7 +95,8 @@ html,body{
 .section{ margin-bottom:48px; }
 .section--header{ margin-top:8px; }
 
-/* Notice card: radius 24, padding 24/28, 3-column grid 40|1fr|40; subtle shadow per audit */
+/* Notice card: radius 24, padding 24/28, 3-column grid 40|1fr|40
+   Subtle shadow per audit to match depth */
 .notice{
   background:var(--notice-bg);
   border-radius:24px;
@@ -121,6 +125,7 @@ html,body{
   display:block;
   width:100%;
   height:100%;
+  /* cross-browser rendering hints */
   shape-rendering: geometricPrecision;
   text-rendering: optimizeLegibility;
   image-rendering: -webkit-optimize-contrast;
@@ -133,7 +138,7 @@ html,body{
 .cta-group{ margin:16px 0 24px 0; }
 .cta-frame{
   background:var(--cta);
-  border-radius:24px;
+  border-radius:24px; /* Figma corner radius ~24px */
   width:clamp(240px, 50%, 560px);  /* base 560px */
   height:clamp(72px, 12vw, 160px); /* base 160px */
   display:flex;
@@ -165,7 +170,7 @@ button:focus-visible,
 .notice:focus-visible{
   outline: var(--focus-outline);
   outline-offset: var(--focus-offset);
-  border-radius: 8px;
+  border-radius: 8px; /* ensure visible rounded focus */
 }
 
 /* Responsive adjustments maintain visual hierarchy */

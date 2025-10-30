@@ -6,18 +6,18 @@ References:
 */
 
 :root{
-  /* Colors per Figma tokens */
+  /* Shared tokens (kept in sync with indice.css) */
   --bg:#39393e;         /* style_32 */
   --cta:#ffe500;        /* style_38 */
   --text:#ffffff;
   --line:#ffffff;       /* style_42 white vertical stroke */
   --black:#000000;
 
-  /* Layout */
+  /* Layout (Figma frame width: 1440px) */
   --base-max: 1440px;
-  --pad-x: 64px;
-  --pad-top: 64px;
-  --pad-bottom: 120px;
+  --pad-x: 64px;        /* side paddings: 64px */
+  --pad-top: 64px;      /* top padding: 64px */
+  --pad-bottom: 120px;  /* bottom padding: 120px */
 
   /* Radii */
   --radius-4: 4px;
@@ -36,8 +36,10 @@ html,body{
   background:var(--bg);
   color:var(--text);
   font-family: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* Cross-browser font smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #canvas{
@@ -48,11 +50,11 @@ html,body{
 }
 
 /* Typography mapped with clamp to keep 1440px base while responsive */
-.typo-64{ /* Title ~56px/1.17 bold */
+.typo-64{ /* Title ~56px/1.17 bold (Figma 41:206) */
   font-weight:700;
   font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem); /* 28→56 */
   line-height:1.17;
-  margin:0 0 48px 0;
+  margin:0 0 48px 0; /* spacing below: 48px */
   text-align:left;
 }
 .typo-69{ /* Body ~22px/1.35 regular */
@@ -81,7 +83,7 @@ html,body{
 .section{ margin-bottom:56px; }
 .section--header{ margin-top:8px; }
 
-/* CTA specimen block */
+/* CTA specimen block (CTA size per Figma: 560x160, radius 24) */
 .cta-block{
   display:flex;
   align-items:center;
@@ -91,8 +93,8 @@ html,body{
 .cta-frame{
   background:var(--cta);
   border-radius:var(--radius-24);
-  width:clamp(240px, 50%, 560px);
-  height:clamp(96px, 12vw, 160px);
+  width:clamp(240px, 50%, 560px);   /* base 560px */
+  height:clamp(96px, 12vw, 160px);  /* base 160px (slightly taller at min to balance) */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -112,15 +114,16 @@ html,body{
   display:block;
   width:24px;
   height:24px;
+  /* Cross-browser rendering hints */
   shape-rendering: geometricPrecision;
   text-rendering: optimizeLegibility;
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* Figures and images */
+/* Figures and images (asset paths validated: /assets/figmaimages/*.png) */
 .figure{ margin:16px 0 24px 0; }
 .img{ display:block; max-width:100%; height:auto; border-radius:var(--radius-8); }
-.img-176_1015{ width:880px; }
+.img-176_1015{ width:880px; }     /* Figma scaled specimen */
 .img-176_1016{ width:620px; }
 .img-41_221{ width:72px; height:72px; }
 .img-176_1018{ width:900px; }
@@ -132,7 +135,7 @@ html,body{
 .group-29360-stage{ position:relative; display:inline-block; }
 .group-29360-stage .overlay{
   position:absolute;
-  right:28px;
+  right:28px; /* Figma offset approx */
   top:28px;
   border-radius:var(--radius-12);
 }

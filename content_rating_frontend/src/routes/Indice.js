@@ -4,11 +4,11 @@ import './indice.css';
 // PUBLIC_INTERFACE
 export default function Indice() {
   /**
-   * Índice de prototipos screen.
-   * Pixel-accurate structure per Figma 41:135.
-   * Spacing/typography/line heights/colors per:
-   * - kavia-docs/pixel-parity-audit-indice-instrucciones.md
-   * - kavia-docs/figma-analysis-indice-41-135.md
+   * Índice de prototipos screen (Figma 41:135).
+   * Pixel parity for grid, typography, spacing, shapes; shared tokens with Instrucciones.
+   * Notes:
+   * - Decorative inline SVGs set aria-hidden/focusable=false to avoid keyboard traps.
+   * - CTAs have visible :focus-visible outlines via CSS tokens.
    */
   useEffect(() => {
     // Ensure inline SVGs are decorative per audit (avoid tab stops)
@@ -27,10 +27,10 @@ export default function Indice() {
         <h1 id="titulo-indice" className="typo-64">Índice de prototipos</h1>
       </header>
 
-      {/* Notice Frame 1685 with 24px radius, grid 40|1fr|40, per audit */}
+      {/* Notice Frame 1685 with 24px radius, grid 40|1fr|40 */}
       <section className="section section--notice" aria-label="Aviso importante">
         <div className="notice" role="alert" aria-live="polite">
-          {/* Left decorative icon (inline SVG; no raster). Colors per figma (#815c13, #feaa01, #4a5764) */}
+          {/* Left decorative icon */}
           <div className="notice__icon" aria-hidden="true">
             <svg className="notice__svg" width="40" height="40" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="110" cy="110" rx="103.125" ry="96.25" fill="#815c13"/>

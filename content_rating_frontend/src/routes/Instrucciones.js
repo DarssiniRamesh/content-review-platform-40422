@@ -6,9 +6,9 @@ export default function Instrucciones() {
   /**
    * Instrucciones screen mapped to Figma 41:206.
    * Pixel parity for container/grid, typography, spacing, shapes, and imagery.
-   * References:
-   * - kavia-docs/pixel-parity-audit-indice-instrucciones.md
-   * - kavia-docs/figma-analysis-instrucciones-41-206.md
+   * Notes:
+   * - All images must reference /assets/figmaimages to ensure correct public asset resolution.
+   * - Focus styles are visible via :focus-visible and shared CSS tokens with Índice.
    */
   useEffect(() => {
     // Ensure any inline decorative shapes remain non-focusable for AT
@@ -19,7 +19,7 @@ export default function Instrucciones() {
 
   return (
     <main id="canvas" role="main" aria-label="Instrucciones - Guía de uso de prototipos">
-      {/* Header: Title size/weight/spacing per audit */}
+      {/* Header: Title size/weight/spacing per Figma (56px, lh ~1.17) */}
       <header className="section section--header" aria-labelledby="titulo-principal">
         <h1 id="titulo-principal" className="typo-64">¿Cómo consumir estos prototipos?</h1>
       </header>
@@ -49,7 +49,7 @@ export default function Instrucciones() {
         </div>
       </section>
 
-      {/* Example of the prototype window image */}
+      {/* Example of the prototype window image (path validated: /assets/figmaimages/figma_image_176_1015.png) */}
       <section className="section section--window-example">
         <p className="typo-69">Una vez que la ventana de prototipos este abierta, se verá de esta forma:</p>
         <figure className="figure">
