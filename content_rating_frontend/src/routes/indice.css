@@ -1,191 +1,141 @@
+/* Synced 1:1 from assets/ndice-41-135.css — Do not modify styles without updating the source asset. */
 :root{
-  /* Shared tokens (kept in sync with instrucciones.css)
-     Colors (Figma refs): style_32, style_15, style_38, style_41 */
-  --bg:#39393e;          /* style_32 */
-  --text:#ffffff;
-  --notice-bg:#ffffff;   /* style_15 */
-  --cta:#ffe500;         /* style_38 */
-  --divider:#797979;     /* style_41 */
-  --black:#000000;
-  --muted:#ababab;
-
-  /* Focus styling to maintain keyboard accessibility */
-  --focus-outline: 2px solid #ffffff;
-  --focus-offset: 2px;
-
-  /* Layout tokens (per pixel grid from Figma 41:135) */
-  --base-max: 1440px;            /* audit: frame width (Figma 41:135) */
-  --pad-x: 64px;                 /* side paddings: 64px */
-  --pad-top: 64px;               /* top padding: 64px */
-  --pad-bottom: 120px;           /* bottom padding: 120px */
+  --bg:#39393e;     /* style_32 */
+  --text:#ffffff;   /* general text color */
+  --notice-bg:#ffffff; /* style_15 */
+  --cta:#ffe500;    /* style_38 */
+  --divider:#797979;/* style_41 */
+  --black:#000000;  /* CTA text */
+  --muted:#ababab;  /* typo_68 */
 }
 
 html,body{
   margin:0;
+  padding:0;
   background:var(--bg);
   color:var(--text);
-  font-family: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  /* Cross-browser font smoothing */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  font-family: Roboto, Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
 }
 
 #canvas{
-  width: min(100%, var(--base-max));
+  /* Scaled canvas for desktop preview; original frame: 8896x11916 */
+  width: 1440px;
   margin: 0 auto;
-  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  padding: 64px 64px 120px;
   box-sizing: border-box;
 }
 
-/* Typography: sizes/weights/line-heights mapped from audit
-   Title Roboto Bold ~56px, lh ~1.17 (Figma 41:135) */
-.typo-64{
+/* Typography mappings (scaled approximations from design system) */
+.typo-64{ /* Title: Roboto, size 400, bold */
   font-weight:700;
-  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem); /* 28 → 56 (Figma 41:135) */
+  font-size:56px;
   line-height:1.17;
-  margin:0 0 40px 0; /* spacing below: 40px */
+  margin:0 0 40px 0;
 }
-
-/* Notice body: Roboto Bold dark on white, ~24px, lh ~1.4 per audit */
-.typo-63{
-  color:#111111;
+.typo-63{ /* Notice body: Roboto 140 bold, dark text over white bg */
+  color:#1a1a1a;
   font-weight:700;
-  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.5rem); /* 16 → 24 */
-  line-height:1.4;
+  font-size:24px;
+  line-height:1.35;
   margin:0;
 }
-
-/* Section title: Inter Bold ~34px, lh ~1.3, spacing 32/12 per audit */
-.typo-65{
-  font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+.typo-65{ /* Section title: Inter 200 bold */
+  font-family: Inter, Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   font-weight:700;
-  font-size: clamp(1.25rem, 1rem + 1vw, 2.125rem); /* 20 → 34 */
+  font-size:34px;
   line-height:1.3;
-  margin:32px 0 12px 0; /* top 32px, bottom 12px */
+  margin:32px 0 12px 0;
 }
-
-/* Section body: Roboto Regular ~20px, lh 1.5 per Figma */
-.typo-66{
+.typo-66{ /* Section body: Roboto 100 regular */
   font-weight:400;
-  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem); /* 16 → 20 */
+  font-size:20px;
   line-height:1.5;
   margin:0 0 24px 0;
 }
-
-/* CTA label: Roboto Bold ~28px, black text */
-.typo-67{
+.typo-67{ /* CTA label: Roboto ~162 bold, black */
   font-weight:700;
-  font-size: clamp(1rem, 0.9rem + 0.9vw, 1.75rem); /* 16 → 28 */
+  font-size:28px;
   line-height:1.2;
   color:var(--black);
   text-align:center;
 }
-
-/* CTA support text: Roboto Regular ~18px, muted */
-.typo-68{
+.typo-68{ /* CTA support: Roboto 100 regular, muted */
   font-weight:400;
-  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.125rem); /* 15 → 18 */
+  font-size:18px;
   line-height:1.4;
   color:var(--muted);
   margin:12px 0 0 0;
 }
 
-/* Sections spacing per audit */
-.section{ margin-bottom:48px; }
-.section--header{ margin-top:8px; }
+/* Sections */
+.section{
+  margin-bottom: 48px;
+}
+.section--header{
+  margin-top: 8px;
+}
 
-/* Notice card: radius 24, padding 24/28, 3-column grid 40|1fr|40
-   Subtle shadow per audit to match depth */
+/* Notice (Frame 1685, style_15 with radius 100) */
 .notice{
-  background:var(--notice-bg);
-  border-radius:24px;
-  padding:24px 28px;
-  display:grid;
-  grid-template-columns:40px 1fr 40px;
-  align-items:center;
-  gap:16px;
-  box-sizing:border-box;
-  /* Shadow tuned to match visual depth in Figma review */
-  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 2px 8px rgba(0,0,0,.08);
+  background: var(--notice-bg);
+  border-radius: 24px; /* scaled from 100 */
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px; /* flanking icons with central text */
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
 }
-
 .notice__icon{
-  width:40px;
-  height:40px;
-  border-radius:8px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  background:transparent;
+  width: 40px;   /* scaled from 220 to 40 for web preview */
+  height: 40px;
+  border-radius: 8px; /* visual rounding for container */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* No background to let SVG be crisp */
+  background: transparent;
 }
-
-/* SVG rendering tweaks for crispness across browsers */
 .notice__svg{
   display:block;
-  width:100%;
-  height:100%;
-  /* cross-browser rendering hints */
-  shape-rendering: geometricPrecision;
-  text-rendering: optimizeLegibility;
-  image-rendering: -webkit-optimize-contrast;
+  width: 100%;
+  height: 100%;
 }
 
-/* Prototype blocks top offset */
-.section--proto{ margin-top:8px; }
+/* Prototype section blocks */
+.section--proto{
+  margin-top: 8px;
+}
 
-/* CTA group: spacing per audit; button keeps responsive width while preserving base pixel size at 1440 */
-.cta-group{ margin:16px 0 24px 0; }
+/* CTA group (Groups 29354/29355/29356) */
+.cta-group{
+  margin: 16px 0 24px 0;
+}
 .cta-frame{
-  background:var(--cta);
-  border-radius:24px; /* Figma corner radius ~24px */
-  width:clamp(240px, 50%, 560px);  /* base 560px */
-  height:clamp(72px, 12vw, 160px); /* base 160px */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  /* Button semantics and interactions */
-  border:0;
-  cursor:pointer;
-  color:inherit;
+  background: var(--cta);
+  border-radius: 24px; /* scaled from 100 */
+  width: 560px;        /* scaled from 1680 */
+  height: 160px;       /* scaled from 480 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cta-text{ padding:8px 16px; }
-.cta-support{ margin-top:16px; }
+.cta-text{
+  padding: 8px 16px;
+}
+.cta-support{
+  margin-top: 16px;
+}
 
-/* Divider 5px #797979 per style_41 */
+/* Divider lines (style_41, 5px border color #797979) */
 .divider{
-  border:none;
-  border-top:5px solid var(--divider);
-  margin:32px 0;
+  border: none;
+  border-top: 5px solid var(--divider);
+  margin: 32px 0;
 }
 
-/* Focus ring for keyboard accessibility */
-a[href], button, .cta-frame, .notice{
-  outline:none;
-}
-a[href]:focus-visible,
-button:focus-visible,
-.cta-frame:focus-visible,
-.notice:focus-visible{
-  outline: var(--focus-outline);
-  outline-offset: var(--focus-offset);
-  border-radius: 8px; /* ensure visible rounded focus */
-}
-
-/* Responsive adjustments maintain visual hierarchy */
+/* Responsive considerations for standalone viewing */
 @media (max-width: 1200px){
-  #canvas{ width:100%; padding:24px; }
-  .notice{ grid-template-columns:1fr; text-align:left; }
-  .notice__icon{ display:none; }
-  .cta-frame{ width:100%; }
-}
-
-/* Motion safety for users preferring reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
+  #canvas{ width: 100%; padding: 24px; }
+  .cta-frame{ width: 100%; height: 128px; }
 }
