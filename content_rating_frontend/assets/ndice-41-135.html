@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Índice de prototipos (41:135)</title>
+  <!--
+    Summary:
+    - Added landmarks (header/main/footer), aria-live role=alert for the notice, and accessible names/roles.
+    - Replaced non-interactive CTA containers with <button> for keyboard accessibility.
+    - Preserved pixel base while enabling fluid behavior and clamp-based typography (see CSS).
+    - Ensured inline SVGs are decorative (aria-hidden, focusable=false).
+    - Divider is aria-hidden to avoid noise for screen readers.
+  -->
+  <link rel="stylesheet" href="./ndice-41-135.css"/>
+</head>
+<body>
+  <!-- Landmark: main -->
+  <main id="canvas" role="main" aria-label="Índice de prototipos">
+    <!-- Título principal -->
+    <header class="section section--header" aria-labelledby="titulo-indice">
+      <h1 id="titulo-indice" class="typo-64">Índice de prototipos</h1>
+    </header>
+
+    <!-- Aviso importante (Frame 1685) -->
+    <section class="section section--notice" aria-label="Aviso importante">
+      <!-- Use role=alert for assistive tech and aria-live to announce -->
+      <div class="notice" role="alert" aria-live="polite">
+        <!-- Icono vectorial izquierdo (decorativo) -->
+        <div class="notice__icon" aria-hidden="true">
+          <svg class="notice__svg" width="40" height="40" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <ellipse cx="110" cy="110" rx="103.125" ry="96.25" fill="#815c13"/>
+            <ellipse cx="110" cy="110" rx="89.375" ry="82.5" fill="#feaa01"/>
+            <ellipse cx="110" cy="110" rx="89.375" ry="75.625" fill="#feaa01"/>
+            <rect x="96.25" y="56.875" width="27.5" height="96.25" rx="4" fill="#4a5764"/>
+            <rect x="96.25" y="70.625" width="27.5" height="96.25" rx="4" fill="#feaa01"/>
+            <circle cx="110" cy="175.625" r="13.75" fill="#4a5764"/>
+            <circle cx="110" cy="161.875" r="13.75" fill="#feaa01"/>
+          </svg>
+        </div>
+
+        <div class="notice__content" id="aviso-importante">
+          <p class="typo-63">
+            <strong>Importante</strong><br/><br/>
+            Los guiones que acompañan los prototipos son sumamente específicos y cualquier otro comportamiento
+            fuera de ese guión no se debe considerar como comportamiento esperado.
+          </p>
+        </div>
+
+        <!-- Icono vectorial derecho (decorativo) -->
+        <div class="notice__icon" aria-hidden="true">
+          <svg class="notice__svg" width="40" height="40" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <ellipse cx="110" cy="110" rx="103.125" ry="96.25" fill="#815c13"/>
+            <ellipse cx="110" cy="110" rx="89.375" ry="82.5" fill="#feaa01"/>
+            <ellipse cx="110" cy="110" rx="89.375" ry="75.625" fill="#feaa01"/>
+            <rect x="96.25" y="56.875" width="27.5" height="96.25" rx="4" fill="#4a5764"/>
+            <rect x="96.25" y="70.625" width="27.5" height="96.25" rx="4" fill="#feaa01"/>
+            <circle cx="110" cy="175.625" r="13.75" fill="#4a5764"/>
+            <circle cx="110" cy="161.875" r="13.75" fill="#feaa01"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 1: Entrada y salida de calificador de contenidos -->
+    <section class="section section--proto" aria-labelledby="sec-1-title">
+      <h2 id="sec-1-title" class="typo-65">Entrada y salida de calificador de contenidos</h2>
+      <p class="typo-66">
+        Objetivo del prototipo:<br/>
+        Observar el comportamiento de la entrada al Calificador de contenidos desde los créditos,
+        y regresar a la reproducción en pantalla completa.<br/><br/>
+        Teclas para navegar:<br/>
+        ↑ Enter<br/><br/>
+        Guión del prototipo:<br/>
+        Esperar 3 segundos para observar la entrada al Calificador de contenidos.<br/>
+        Subir al botón Me gusta con la tecla (↑).<br/>
+        Subir al reproductor PiP con la tecla (↑).<br/>
+        Salir del Calificador de contenidos y regresar a la reproducción en pantalla completa con la tecla (Enter).
+      </p>
+
+      <!-- Grupo 29354: CTA + texto de apoyo -->
+      <div class="cta-group" role="group" aria-label="Prototipo 1 - Inicio">
+        <button type="button" class="cta-frame" aria-describedby="cta1-desc">
+          <span class="cta-text typo-67">Click aquí para iniciar prototipo 1</span>
+        </button>
+        <p id="cta1-desc" class="cta-support typo-68">
+          Da click en el botón amarillo para visualizar las interacciones descritas en el guión
+        </p>
+      </div>
+
+      <!-- Divisor (Line 1, style_41) -->
+      <hr class="divider" aria-hidden="true"/>
+    </section>
+
+    <!-- Sección 2: Navegación por el Calificador de Contenidos -->
+    <section class="section section--proto" aria-labelledby="sec-2-title">
+      <h2 id="sec-2-title" class="typo-65">Navegación por el Calificador de Contenidos</h2>
+      <p class="typo-66">
+        Objetivo del prototipo:<br/>
+        Navegar por la pantalla del Calificador de Contenidos.<br/><br/>
+        Teclas para navegar:<br/>
+        ↓ ↑ → Enter<br/><br/>
+        Guión del prototipo:<br/>
+        Subir al botón Me gusta con la tecla (↑).<br/>
+        Navegar a la derecha al botón Me encanta con la tecla (→).<br/>
+        Navegar a la derecha al botón No me gusta con la tecla (→).<br/>
+        Subir al reproductor PiP con la tecla (↑).<br/>
+        Bajar al botón Me gusta con la tecla (↓).<br/>
+        Bajar al botón Cerrar con la tecla (↓).<br/>
+        Cerrar el Calificador de contenidos y regresar a la reproducción en pantalla completa con la tecla (Enter).
+      </p>
+
+      <!-- Grupo 29355: CTA + texto de apoyo -->
+      <div class="cta-group" role="group" aria-label="Prototipo 2 - Inicio">
+        <button type="button" class="cta-frame" aria-describedby="cta2-desc">
+          <span class="cta-text typo-67">Click aquí para iniciar prototipo 2</span>
+        </button>
+        <p id="cta2-desc" class="cta-support typo-68">
+          Da click en el botón amarillo para visualizar las interacciones descritas en el guión
+        </p>
+      </div>
+
+      <!-- Divisor (Line 2, style_41) -->
+      <hr class="divider" aria-hidden="true"/>
+    </section>
+
+    <!-- Sección 3: Comportamiento de notificación -->
+    <section class="section section--proto" aria-labelledby="sec-3-title">
+      <h2 id="sec-3-title" class="typo-65">Comportamiento de notificación al calificar el contenido.</h2>
+      <p class="typo-66">
+        Objetivo del prototipo:<br/>
+        Calificar el contenido y observar la notificación.<br/><br/>
+        Teclas para navegar:<br/>
+        ↑ Enter<br/><br/>
+        Guión del prototipo:<br/>
+        Subir al botón Me gusta con la tecla (↑).<br/>
+        Calificar el contenido con Me gusta con la tecla (Enter).<br/>
+        Esperar 6 segundos a que la notificación de feedback desaparezca.<br/>
+        Esperar 4 segundos a que se cierre el panel de calificación automáticamente.
+      </p>
+
+      <!-- Grupo 29356: CTA + texto de apoyo -->
+      <div class="cta-group" role="group" aria-label="Prototipo 3 - Inicio">
+        <button type="button" class="cta-frame" aria-describedby="cta3-desc">
+          <span class="cta-text typo-67">Click aquí para iniciar prototipo 3</span>
+        </button>
+        <p id="cta3-desc" class="cta-support typo-68">
+          Da click en el botón amarillo para visualizar las interacciones descritas en el guión
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer landmark for completeness -->
+    <footer class="section" aria-label="Pie de página">
+      <span class="typo-68" aria-hidden="true">© Prototipos</span>
+    </footer>
+  </main>
+
+  <script src="./ndice-41-135.js"></script>
+</body>
+</html>

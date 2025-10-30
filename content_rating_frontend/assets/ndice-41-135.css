@@ -1,0 +1,236 @@
+/*
+Summary:
+- Implemented fluid layout with clamp-based typography while preserving 1440px base pixel grid.
+- Introduced CSS variables for colors, spacing, radii, fonts, and focus to reduce duplication and improve maintainability.
+- Organized layers for the notice, CTAs, and sections; improved visual fidelity to Figma (spacing, radii, divider thickness).
+- Enhanced accessibility: focus-visible styles and improved notice text contrast.
+- Cross-browser tweaks: font smoothing, SVG rendering hints, motion reduction.
+*/
+
+:root{
+  /* Colors */
+  --bg:#39393e;          /* style_32 */
+  --text:#ffffff;        /* general text color */
+  --notice-bg:#ffffff;   /* style_15 */
+  --notice-text:#111111; /* improved contrast over white */
+  --cta:#ffe500;         /* style_38 */
+  --divider:#797979;     /* style_41 */
+  --black:#000000;       /* CTA text */
+  --muted:#ababab;       /* typo_68 */
+
+  /* Spacing scale (px) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-12: 64px;
+  --space-16: 96px;
+  --space-20: 120px;
+
+  /* Radii */
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+
+  /* Typography stacks */
+  --font-sans-primary: Roboto, Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-sans-alt: Inter, Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Layout */
+  --base-max: 1440px; /* base pixel-perfect width */
+  --content-pad-x: var(--space-12);
+  --content-pad-y: var(--space-12);
+
+  /* Focus and outline */
+  --focus-outline: 2px solid #ffffff;
+  --focus-offset: 2px;
+
+  /* Z-index */
+  --z-tooltip: 1000;
+  --z-overlay: 1100;
+  --z-fixed: 1200;
+}
+
+/* Global reset and body */
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: var(--font-sans-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Root container: fluid up to base width; keeps pixel grid at base */
+#canvas{
+  width: min(100%, var(--base-max));
+  margin-inline: auto;
+  padding: var(--content-pad-y) var(--content-pad-x) var(--space-20);
+  box-sizing: border-box;
+}
+
+/* Typographic scale using clamp (min, vw, max) while aligning with base at 1440px */
+.typo-64{ /* Title */
+  font-weight:700;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem); /* ~28px to 56px */
+  line-height: 1.17;
+  margin: 0 0 var(--space-9) 0;
+  letter-spacing: 0;
+}
+.typo-63{ /* Notice body */
+  color: var(--notice-text);
+  font-weight:700;
+  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.5rem); /* ~16px to 24px */
+  line-height: 1.4;
+  margin:0;
+}
+.typo-65{ /* Section title */
+  font-family: var(--font-sans-alt);
+  font-weight:700;
+  font-size: clamp(1.25rem, 1rem + 1vw, 2.125rem); /* ~20px to 34px */
+  line-height: 1.3;
+  margin: var(--space-8) 0 var(--space-3) 0;
+}
+.typo-66{ /* Section body */
+  font-weight:400;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem); /* ~16px to 20px */
+  line-height: 1.5;
+  margin: 0 0 var(--space-6) 0;
+}
+.typo-67{ /* CTA label */
+  font-weight:700;
+  font-size: clamp(1rem, 0.9rem + 0.9vw, 1.75rem); /* ~16px to 28px */
+  line-height: 1.2;
+  color:var(--black);
+  text-align:center;
+}
+.typo-68{ /* CTA support */
+  font-weight:400;
+  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.125rem); /* ~15px to 18px */
+  line-height:1.4;
+  color:var(--muted);
+  margin: var(--space-3) 0 0 0;
+}
+
+/* Sections */
+.section{
+  margin-bottom: var(--space-10);
+}
+.section--header{
+  margin-top: var(--space-1);
+}
+
+/* Notice (Frame 1685) */
+.notice{
+  background: var(--notice-bg);
+  border-radius: var(--radius-24);
+  padding: var(--space-6) var(--space-7);
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 2.5rem; /* icons and central text (40px base) */
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  /* ensure prominence */
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 2px 8px rgba(0,0,0,.08);
+}
+.notice__icon{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+.notice__svg{
+  display:block;
+  width: 100%;
+  height: 100%;
+  /* Safari/Edge inline SVG rendering tweaks */
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prototype section blocks */
+.section--proto{
+  margin-top: var(--space-1);
+}
+
+/* CTA group (Groups 29354/29355/29356) */
+.cta-group{
+  margin: var(--space-4) 0 var(--space-6) 0;
+}
+.cta-frame{
+  background: var(--cta);
+  border-radius: var(--radius-24);
+  width: clamp(240px, 50%, 560px);      /* fluid width up to base 560px */
+  height: clamp(72px, 12vw, 160px);     /* fluid height up to base 160px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* button semantics compatibility */
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+}
+.cta-text{
+  padding: var(--space-2) var(--space-4);
+}
+.cta-support{
+  margin-top: var(--space-4);
+}
+
+/* Divider lines */
+.divider{
+  border: none;
+  border-top: 5px solid var(--divider);
+  margin: var(--space-8) 0;
+}
+
+/* Accessibility: focus-visible outlines for interactive elements inside this static page */
+a[href], button, .cta-frame, .notice{
+  outline: none;
+}
+a[href]:focus-visible,
+button:focus-visible,
+.cta-frame:focus-visible,
+.notice:focus-visible{
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-8);
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive considerations for standalone viewing */
+@media (max-width: 1200px){
+  #canvas{ width: 100%; padding: var(--space-6); }
+  .notice{ grid-template-columns: 1fr; text-align: left; }
+  .notice__icon{ display:none; }
+  .cta-frame{ width: 100%; }
+}
+
+/* Very small viewports */
+@media (max-width: 360px){
+  .divider{ border-top-width: 4px; }
+}
