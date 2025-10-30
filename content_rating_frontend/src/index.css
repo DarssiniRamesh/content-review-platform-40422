@@ -1,13 +1,43 @@
-body {
+/* Global reset and Figma background enforcement
+   Figma value reference:
+   - Background color: #39393e (style_32) from provided assets
+*/
+html, body, #root {
   margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html, body {
+  background: #39393e; /* Figma background */
+  color: #ffffff;      /* Default text color aligned with screens */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Root app container to ensure background never gets overridden */
+.app-root {
+  min-height: 100%;
+  background: #39393e; /* Figma background (style_32) */
+}
+
+/* Utility: motion-safe transition used by page transitions */
+.page {
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+.page[aria-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Reduced motion users: disable decorative transitions */
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    transition: none !important;
+  }
 }

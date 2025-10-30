@@ -1,6 +1,8 @@
-/* Synced 1:1 from assets/ndice-41-135.css — Do not modify styles without updating the source asset. */
+/* Synced 1:1 from assets/ndice-41-135.css — Do not modify layout mappings.
+   Background color reference (Figma style_32): #39393e
+*/
 :root{
-  --bg:#39393e;     /* style_32 */
+  --bg:#39393e;     /* Figma background */
   --text:#ffffff;   /* general text color */
   --notice-bg:#ffffff; /* style_15 */
   --cta:#ffe500;    /* style_38 */
@@ -12,13 +14,13 @@
 html,body{
   margin:0;
   padding:0;
-  background:var(--bg);
+  background:var(--bg); /* reinforce Figma background at screen level */
   color:var(--text);
   font-family: Roboto, Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
 }
 
 #canvas{
-  /* Scaled canvas for desktop preview; original frame: 8896x11916 */
+  /* Scaled canvas for desktop preview; original frame size mapped to 1440 width */
   width: 1440px;
   margin: 0 auto;
   padding: 64px 64px 120px;
@@ -26,40 +28,40 @@ html,body{
 }
 
 /* Typography mappings (scaled approximations from design system) */
-.typo-64{ /* Title: Roboto, size 400, bold */
+.typo-64{ /* Title */
   font-weight:700;
   font-size:56px;
   line-height:1.17;
   margin:0 0 40px 0;
 }
-.typo-63{ /* Notice body: Roboto 140 bold, dark text over white bg */
+.typo-63{ /* Notice body */
   color:#1a1a1a;
   font-weight:700;
   font-size:24px;
   line-height:1.35;
   margin:0;
 }
-.typo-65{ /* Section title: Inter 200 bold */
+.typo-65{ /* Section title */
   font-family: Inter, Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   font-weight:700;
   font-size:34px;
   line-height:1.3;
   margin:32px 0 12px 0;
 }
-.typo-66{ /* Section body: Roboto 100 regular */
+.typo-66{ /* Section body */
   font-weight:400;
   font-size:20px;
   line-height:1.5;
   margin:0 0 24px 0;
 }
-.typo-67{ /* CTA label: Roboto ~162 bold, black */
+.typo-67{ /* CTA label */
   font-weight:700;
   font-size:28px;
   line-height:1.2;
   color:var(--black);
   text-align:center;
 }
-.typo-68{ /* CTA support: Roboto 100 regular, muted */
+.typo-68{ /* CTA support */
   font-weight:400;
   font-size:18px;
   line-height:1.4;
@@ -75,25 +77,24 @@ html,body{
   margin-top: 8px;
 }
 
-/* Notice (Frame 1685, style_15 with radius 100) */
+/* Notice (Frame 1685) */
 .notice{
   background: var(--notice-bg);
-  border-radius: 24px; /* scaled from 100 */
+  border-radius: 24px;
   padding: 24px 28px;
   display: grid;
-  grid-template-columns: 40px 1fr 40px; /* flanking icons with central text */
+  grid-template-columns: 40px 1fr 40px;
   align-items: center;
   gap: 16px;
   box-sizing: border-box;
 }
 .notice__icon{
-  width: 40px;   /* scaled from 220 to 40 for web preview */
+  width: 40px;
   height: 40px;
-  border-radius: 8px; /* visual rounding for container */
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* No background to let SVG be crisp */
   background: transparent;
 }
 .notice__svg{
@@ -107,18 +108,20 @@ html,body{
   margin-top: 8px;
 }
 
-/* CTA group (Groups 29354/29355/29356) */
+/* CTA group */
 .cta-group{
   margin: 16px 0 24px 0;
 }
 .cta-frame{
   background: var(--cta);
-  border-radius: 24px; /* scaled from 100 */
-  width: 560px;        /* scaled from 1680 */
-  height: 160px;       /* scaled from 480 */
+  border-radius: 24px;
+  width: 560px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0; /* clickable button in SPA mode */
+  cursor: pointer;
 }
 .cta-text{
   padding: 8px 16px;
@@ -127,14 +130,14 @@ html,body{
   margin-top: 16px;
 }
 
-/* Divider lines (style_41, 5px border color #797979) */
+/* Divider lines */
 .divider{
   border: none;
   border-top: 5px solid var(--divider);
   margin: 32px 0;
 }
 
-/* Responsive considerations for standalone viewing */
+/* Responsive considerations */
 @media (max-width: 1200px){
   #canvas{ width: 100%; padding: 24px; }
   .cta-frame{ width: 100%; height: 128px; }

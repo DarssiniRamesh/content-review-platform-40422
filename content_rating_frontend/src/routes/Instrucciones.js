@@ -1,10 +1,10 @@
 import React from 'react';
 import './instrucciones.css';
 
-/* Synced from assets/instrucciones-41-206.html and assets/instrucciones-41-206.css — Do not change structure/classes without updating assets. */
+/* Synced from assets/instrucciones-41-206.html and assets/instrucciones-41-206.css — Keep structure/classes mapped to Figma. */
 // PUBLIC_INTERFACE
 export default function Instrucciones() {
-  /** Exact DOM structure and class names from assets/instrucciones-41-206.html */
+  /** Instrucciones screen — static content per Figma with images from /assets/figmaimages. */
   return (
     <main id="canvas" role="main" aria-label="Instrucciones - Guía de uso de prototipos">
       <header className="section section--header" aria-labelledby="titulo-principal">

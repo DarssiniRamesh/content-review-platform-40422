@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './indice.css';
 
-/* Synced from assets/ndice-41-135.html and assets/ndice-41-135.css — Do not change structure/classes without updating assets. */
+/* Synced from assets/ndice-41-135.html and assets/ndice-41-135.css — Keep structure/classes mapped to Figma. */
 // PUBLIC_INTERFACE
-export default function Indice() {
-  /** Exact DOM structure and class names from assets/ndice-41-135.html */
+export default function Indice({ onStart }) {
+  /** Índice screen. Provides CTA buttons that advance to the Instrucciones step within the SPA. */
   useEffect(() => {
     // Ensure notice SVGs are decorative and not focusable
     document.querySelectorAll('.notice__icon svg').forEach((svg) => {
@@ -12,6 +12,12 @@ export default function Indice() {
       svg.setAttribute('focusable', 'false');
     });
   }, []);
+
+  // handler to advance flow
+  const handleStart = (e) => {
+    e.preventDefault();
+    if (typeof onStart === 'function') onStart();
+  };
 
   return (
     <main id="canvas" role="main" aria-label="Índice de prototipos">
@@ -71,10 +77,10 @@ export default function Indice() {
         </p>
 
         <div className="cta-group" role="group" aria-label="Prototipo 1 - Inicio">
-          <div className="cta-frame">
-            <div className="cta-text typo-67">Click aquí para iniciar prototipo 1</div>
-          </div>
-          <p className="cta-support typo-68">
+          <button type="button" className="cta-frame" onClick={handleStart} aria-describedby="cta1-desc">
+            <span className="cta-text typo-67">Click aquí para iniciar prototipo 1</span>
+          </button>
+          <p id="cta1-desc" className="cta-support typo-68">
             Da click en el botón amarillo para visualizar las interacciones descritas en el guión
           </p>
         </div>
@@ -100,10 +106,10 @@ export default function Indice() {
         </p>
 
         <div className="cta-group" role="group" aria-label="Prototipo 2 - Inicio">
-          <div className="cta-frame">
-            <div className="cta-text typo-67">Click aquí para iniciar prototipo 2</div>
-          </div>
-          <p className="cta-support typo-68">
+          <button type="button" className="cta-frame" onClick={handleStart} aria-describedby="cta2-desc">
+            <span className="cta-text typo-67">Click aquí para iniciar prototipo 2</span>
+          </button>
+          <p id="cta2-desc" className="cta-support typo-68">
             Da click en el botón amarillo para visualizar las interacciones descritas en el guión
           </p>
         </div>
@@ -126,10 +132,10 @@ export default function Indice() {
         </p>
 
         <div className="cta-group" role="group" aria-label="Prototipo 3 - Inicio">
-          <div className="cta-frame">
-            <div className="cta-text typo-67">Click aquí para iniciar prototipo 3</div>
-          </div>
-          <p className="cta-support typo-68">
+          <button type="button" className="cta-frame" onClick={handleStart} aria-describedby="cta3-desc">
+            <span className="cta-text typo-67">Click aquí para iniciar prototipo 3</span>
+          </button>
+          <p id="cta3-desc" className="cta-support typo-68">
             Da click en el botón amarillo para visualizar las interacciones descritas en el guión
           </p>
         </div>
